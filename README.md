@@ -1,6 +1,6 @@
 ### TikZ animation
 
-<img src="images/SWS.gif" width="426", height="604">
+<img src="images/SWS.gif" width="400">
 
 To convert the .pdf to an animated .gif file, I used:
 ```
