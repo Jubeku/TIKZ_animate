@@ -1,0 +1,84 @@
+\documentclass[tikz]{standalone}
+
+\usepackage{tikz}
+\usepackage{ifthen}
+
+
+\begin{document}
+
+\foreach \t in {0,...,23} {
+
+  \begin{tikzpicture}[scale = 0.35] 
+
+    \coordinate (O)   at (0,0);
+    \coordinate (x1)  at (12,0);
+    \coordinate (x2f) at (-1,-1);
+    \coordinate (x2b) at (5,5);
+    \coordinate (x3)  at (0,-15);
+    \coordinate (f)   at (7.5,4);
+    \coordinate (s)   at (6.78,-2.964);
+    \coordinate (p1)  at (12,2.2);
+    \coordinate (p2)  at (2,-4);  
+  
+    % Radial plane (blue)
+    \draw [white,very thick,fill = blue!30, opacity=0.5]
+          (0,-14.8) -- (0,-8) -- (12,-5.6) -- (12,-12.4) -- cycle;  
+
+    % Blue dashed line
+    \draw[dashed, blue] (8.5,-13.1) -- (8.5,-6.3);  
+  
+    % Draw blue wiggle
+    \ifthenelse{\t<12}{
+      \begin{scope}[yshift=15*\t-325,xshift=242,yslant=-0,xslant=-0]
+        \begin{scope}[yshift=0,xshift=0,rotate=-90,xslant=-0.4]
+          \fill[domain=0:pi,blue!50] plot (\x/2,{3*sin(\x r)^2});
+          \draw[domain=0:pi,thick,blue] plot (\x/2,{3*sin(\x r)^2});
+        \end{scope}
+      \end{scope} 
+    }{} 
+
+    % White plane marking layer interface
+    \draw [white,very thick,fill = gray!30, opacity=0.4]
+        (0,-8) -- (6.78,-10.964) -- (12,-8.18) -- (12,-4) -- (9.375,-3) -- cycle;    
+    % Fast plane (red)
+    \draw [white,very thick,fill = red!50, opacity=0.5]
+        (0,-8) -- (-0,-0) -- (9.375,5) -- (9.375,-3) -- cycle;
+    % Slow plane (green)
+    \draw [white,very thick,fill = green!50, opacity=0.5]
+        (0,-8) -- (-0,-0) -- (6.78,-2.964) -- (6.78,-10.964) -- cycle;  
+  
+
+    % Blue dashed line
+    \draw[dashed, blue] (8.5,-6.3) -- (8.5,1.7);  
+
+    % Draw red and green wiggle
+    \ifthenelse{\t>11}{
+      
+      \begin{scope}[yshift=18*(\t-12)-150,xshift=242,yslant=-0,xslant=-0]
+        \begin{scope}[yshift=0,xshift=0,rotate=-90,xslant=-0.8]
+          \fill[domain=0:pi,red!50] plot (\x/2,{2*sin(\x r)^2});
+          \draw[domain=0:pi,thick,red] plot (\x/2,{2*sin(\x r)^2});
+        \end{scope}
+      \end{scope}     
+
+      \begin{scope}[yshift=12*(\t-12)-150,xshift=242,yslant=-0,xslant=-0]
+        \begin{scope}[yshift=0,xshift=0,rotate=-90,xslant=0.8]
+          \fill[domain=0:pi,green!50] plot (\x/2,{1.5*sin(\x r)^2});
+          \draw[domain=0:pi,thick,green] plot (\x/2,{1.5*sin(\x r)^2});
+        \end{scope}
+      \end{scope} 
+    }{} 
+  
+    % Draw and annotate axes
+    \draw[very thick,->] (O)   -- (x3)  node[below]     {$z$};
+    \draw[very thick,->] (O)   -- (x1)  node[right]     {$x\ \mathbf{E}$};   
+    \draw[very thick,->] (x2f) -- (x2b) node[left]      {$y\ \mathbf{N}$};  
+    \draw[very thick,->] (O)   -- (f)   node[right]     {$f$};   
+    \draw[very thick,->] (O)   -- (p1)  node[right]     {$R$};   
+    \draw[very thick,->] (O)   -- (s)  node[below left] {$s$};   
+    \draw[very thick,->] (O)   -- (p2) node[below left] {$T$};  
+
+  \end{tikzpicture}
+}
+
+\end{document}
