@@ -4,9 +4,9 @@ This animation illustrates so-called Shear-Wave Splitting (SWS) which can occure
 
 <img src="images/SWS.gif" width="400">
 
-The animation was created using TikZ. The code is contained in the file `animateSWS.tex` which creates a .pdf file.
+The animation was created using TikZ. The code is contained in the file `animateSWS.tex` which creates a `PDF` file.
 
-To convert the .pdf to an animated .gif file, I used:
+To convert the `PDF` file to an animated `GIF` file, I used:
 ```
 convert -density 400 -delay 13 -loop 0 -background white -alpha remove animateSWS.pdf images/SWS.gif
 ```
