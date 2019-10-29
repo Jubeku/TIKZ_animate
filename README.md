@@ -1,9 +1,6 @@
 ### TikZ animation
 
-
-![Animated SWS](images/SWS.gif =100x100)
-
-<img src="images/SWS.gif" width="50">
+<img src="images/SWS.gif" width="426", height="604">
 
 To convert the .pdf to an animated .gif file, I used:
 ```
