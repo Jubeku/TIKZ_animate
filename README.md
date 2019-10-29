@@ -1,7 +1,7 @@
 ### TikZ animation
 
 
-![Animated SWS](images/SWS.gif)
+![Animated SWS](images/SWS.gif =100x)
 
 
 To convert the .pdf to an animated .gif file, I used:
